@@ -2,6 +2,7 @@ import React from "react";
 
 import moment from "moment";
 import { signOut } from "../firebase";
+import { Link } from "@reach/router";
 
 const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
   return (
@@ -13,7 +14,9 @@ const CurrentUser = ({ displayName, photoURL, email, createdAt, children }) => {
           </figure>
         </div>
         <div className="card-content">
-          <h2>{displayName}</h2>
+          <Link to="/profile">
+            <h2>{displayName}</h2>
+          </Link>
           <p>{email}</p>
           <p>{moment(createdAt.toDate()).calendar()}</p>
         </div>

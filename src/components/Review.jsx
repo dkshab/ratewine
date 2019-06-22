@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import moment from "moment";
 import { firestore } from "../firebase";
 import { UserContext } from "../providers/UserProvider";
+import { Link } from "@reach/router";
 
 const belongsToCurrentUser = (currentUser, postAuthor) => {
   if (!currentUser) return false;
@@ -17,7 +18,9 @@ const Review = ({ id, title, content, user, createdAt, stars, comments }) => {
   return (
     <div className="tile is-parent is-shady">
       <article className="tile is-child notification is-white">
-        <p className="title">{title}</p>
+        <Link to={`/reviews/${id}`}>
+          <p className="title">{title}</p>{" "}
+        </Link>
         <div className="content">{content}</div>
         <div className="tags has-addons">
           <p>

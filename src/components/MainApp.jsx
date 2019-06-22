@@ -3,6 +3,7 @@ import { Router, Link } from "@reach/router";
 import Reviews from "./Reviews";
 import Authentication from "./Authentication";
 import UserProfile from "./UserProfile";
+import ReviewPage from "./ReviewPage";
 
 class MainApp extends Component {
   render() {
@@ -17,6 +18,7 @@ class MainApp extends Component {
           <Router>
             <Reviews path="/" />
             <UserProfile path="/profile" />
+            <ReviewPage path="/reviews/:id" />
           </Router>
         </div>
       </section>

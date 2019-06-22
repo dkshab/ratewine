@@ -16,7 +16,7 @@ class UserProvider extends Component {
           this.setState({ user: { uid: snapshot.id, ...snapshot.data() } });
         });
       }
-      console.log(userAuth);
+
       this.setState({ userAuth });
     });
   };
@@ -28,6 +28,7 @@ class UserProvider extends Component {
   render() {
     const { user } = this.state;
     const { children } = this.props;
+    console.log(user);
 
     return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
   }

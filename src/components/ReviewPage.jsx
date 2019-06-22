@@ -39,13 +39,19 @@ class ReviewPage extends Component {
     this.unsubscribeFromComments();
   };
 
+  createComment = comment => {
+    this.commentsRef.add({
+      ...comment
+    });
+  };
+
   render() {
     const { review, comments } = this.state;
 
     return (
       <section>
         {review && <Review {...review} />}
-        <Comments comments={comments} onCreate={() => {}} />
+        <Comments comments={comments} onCreate={this.createComment} />
       </section>
     );
   }

@@ -3,6 +3,7 @@ import { firestore } from "../firebase";
 import { collectIdsAndsDocs } from "../utilities";
 import Review from "./Review";
 import Comments from "./Comments";
+import withUser from "./withUser";
 
 class ReviewPage extends Component {
   state = { review: null, comments: [] };
@@ -40,13 +41,16 @@ class ReviewPage extends Component {
   };
 
   createComment = comment => {
+    const { user } = this.props;
     this.commentsRef.add({
-      ...comment
+      ...comment,
+      user
     });
   };
 
   render() {
     const { review, comments } = this.state;
+    console.log(this.props.user);
 
     return (
       <section>
@@ -57,4 +61,4 @@ class ReviewPage extends Component {
   }
 }
 
-export default ReviewPage;
+export default withUser(ReviewPage);
